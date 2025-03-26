@@ -1,5 +1,4 @@
 
 
-9. What is a linked list data structure?
-noooooooooooooo
-
+13. What is FIFO?
+ram
