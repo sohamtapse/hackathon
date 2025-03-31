@@ -1,0 +1,5 @@
+13. What is FIFO? 
+FIFO stands for First in, 
+the previous node. This enables traversal in both directions. Some of the examples of a doubly-linked list are:  Browser cache with back-
+forward visited pages  Song playlist with next and previous buttons  Undo and redo functionality 13. What is FIFO? FIFO stands for First in, 
+First out order, representing the way and order in which data is accessed. The data element stored first in the list is the first entity to be removed

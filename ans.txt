@@ -1,4 +1,0 @@
-
-
-13. What is FIFO?
-ram
