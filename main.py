@@ -5,8 +5,17 @@ import pymupdf #If any ununderstandable error occoured, then replace "pymupdf" b
 from nbclient import NotebookClient
 from nbformat import read,write
 import json
+from fastapi.middleware.cors import CORSMiddleware  
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Frontend URL
+    allow_credentials=False,
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Creating "ContextUploads" & "ExtractedText" & more.. named folders
 upload_DIR = "ContextUploads"
@@ -89,14 +98,13 @@ def delete_files():
         else:
             print(f"Folder not found: {folder}")
 
-book_path = os.path.join( "D:", "\LangChain", "hack_rag", "ans.ipynb")
+book_path = os.path.join( "D:", "\LangChain", "hack_rag", "hack_rag_python_backend","ans.ipynb")
 OUTPUT_DIR = "Op"
 OP_FILENAME = "op.txt"
 OP_PATH = os.path.join(OUTPUT_DIR, OP_FILENAME)
 
 
-@app.get("/getOp")
-
+@app.post("/getOp")
 def run_notebook(notebook_path: str=book_path):
     """Executes a Jupyter Notebook and returns the classification output from op.txt."""
     try:
@@ -107,6 +115,7 @@ def run_notebook(notebook_path: str=book_path):
         # Execute the notebook with a timeout of 600 seconds
         client = NotebookClient(nb, timeout=600)
         client.execute()
+        print("f")
         
 
         # Save the executed notebook with output
